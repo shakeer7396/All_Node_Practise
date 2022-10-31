@@ -14,6 +14,8 @@ var http=require('http');
 var fs=require('fs')
 
 http.createServer((req,res)=>{
-    
-    console.log('server running...');
+  fs.writeFile('test.txt','Changed The Data',(err,data)=>{
+    res.write(data);
+    res.end();
+  })  
 }).listen(8080)
