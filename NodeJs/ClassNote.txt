@@ -1,0 +1,123 @@
+Telugu Skillhub
+Node Js
+Node js is a Asyncronous by nature
+It can run multiple api requests at a time, It is a non-blocking.
+-->synchronous & Blocking means It take request one by one, first complete one go another one Ruby Asb.net Django etc
+
+
+**THINGS TO WORK ON**
+1.HTTP Module 2.File System Module 3.URL Module 4.Node JS NPM 5.Node JS Email  *****
+//EVERY TIME RUN SERVER THEN CHANGE IS POSSIBLE
+
+1)HTTP Module
+var http = require("http");
+
+//req is used for sending request to the browser for particular url path
+//res is used for asking output on the browser
+//.end is used for closing the program
+
+http.createServer(()=>{
+    }).listen(8080) // templete for running the server 
+
+http.createServer((req,res)=>{
+res.write("Hello World !"); //SHOWING IN THE BROWSER BODY
+// res.write(req.url); //Path name showing in the screen
+
+res.end();
+console.log("Run")
+}).listen(8080)
+
+
+2)File System Module
+A file Adding,updating deleting etc these are happen with using FSM
+
+**readFile-->READING ONE FILE DATA AND SHOWING IN THE BROWSER.
+**appendFile-->ADDING DATA OR TEXT DIRECTLY IN THE TEXT FILE. //On the server data is not showing only data changed in file.
+**writeFile-->  ALL DATA WAS OVER RIDDED WITH NEW dATA IN TEXT FILE. IT ALSO CREATE A NEW FILE WHEN FILE IS NOT THERE.
+**unlink--> TEXT FILE IS DELETED DIRECTLY WHEN USING THIS.It take text file name and one err argument and console for showing output. 
+
+//BASIC TEMPLATE AND TAKE 2ARG FILE PATH AND INSIDE FUNCTION ERR, AND OUTPUT
+var http = require("http");
+var fs = require("fs");
+
+http.createServer((req,res)=>{
+fs.readFile("test.txt",(err,data)=>{ //2 parameters file name and already there data showing.
+//fs.appendFile("test.txt"," also Adding content directly in text file",(err,data)=>{// 3 parameters File name and adding text and previous one.
+//fs.writeFile("test.txt"," All Data Was Changed with new data",(err,data)=>{//All Data was over ridded.
+//fs.unlink("test.txt",(err)=>{
+if(err) throw err;
+console.log("File Deleted")
+
+res.write(data);
+res.end()
+})
+}).listen(8080)
+
+
+3)URL MODULE
+
+//It gives the running host number & pathname & 
+var url=require("url")
+var adrs = "http://localhost:8080/home.html?year=2023&month=july"
+var q= url.parse(adrs,true);
+console.log(q.host)//host number 8080
+console.log(q.pathname)//pathname home.html
+console.log(q.search)//query params are ?year=2023&month=july
+
+
+4)Node JS NPM
+var http=require("http");
+var uc = require("upper-case");//ITS A EXAMPLE SMALLER CASE TO UPPER CASE LETERS WE CAN INSTALL AND IMPORT FOR PARTICULAR PACKAGES.
+
+http.createServer((req,res)=>{
+res.write(uc.upperCase("Hello World"));
+res.end();
+}).listen(8080)
+
+
+5)NODE JS Email
+    HOW TO SEND EMAILS USING NODE JS
+
+--> First sender details
+var transportar = nodemailer.createTransport({
+    service : "gmail",
+    auth : {
+        user:'shaikshakeerss123@gmail.com',
+        pass:"123456789"
+    }
+})
+
+--> Receiver and From
+var options = {
+    from:'shaikshakeerss123@gmail.com',
+    to:'shakeershaik7396@gmail.com',
+    subject:'Testing purpose',
+    text:'Sample checking data'
+}
+
+-->Transporter FUNCTION
+transportar.sendMail(options,(err,info)=>{
+    if(err){
+        console.log(err)
+    }
+    else{
+        console.log('Email is Sent'+info.response)
+    }
+})
+
+
+
+//API SERVICE INTEGRATION
+we can host now using godaddy like etc, then api is available for everyone, then we use this api in react projects.
+
+var http=require("http");
+var fs=require("fs");
+
+http.createServer((req,res)=>{
+fs.readFile("data.json",(err,data)=>{
+    res.write(data);
+    res.end();
+    console.log('Api is running')
+})
+}).listen(8080)
+

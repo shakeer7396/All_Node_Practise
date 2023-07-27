@@ -1,0 +1,24 @@
+EXPRESS JS
+1.What is Express js ?
+A.Express is a backend web application framework for Node js. It is a node js framework, it is used for developing web applications and creating APIs. Routing purpose.
+
+setup-npm init press enter for all --entry name is not index put server.js its normal then 
+**npm i express first and 
+**npm i -D nodemon for another time not same time nodemon is used for running the server with auto save.
+** changes in package.json file in scripts-- "start": "node server.js",
+    "server": "nodemon server.js"  for running the application and auto updating the code.
+
+    **sintex 
+    const express = require("express") //Importing the express 
+const app= express();
+app.listen(5000,()=> console.log('Server is Running ...)) // For information is server running or not
+
+COMAND --npm run server in terminal
+
+Basically we are using 4 main Requests GET,POST,PUT OR PATCH,AND DELETE.
+1) .get for getting the API data and display in the browser.
+2) .post for sending the data to database or api.
+3) .put for Editing the api data.
+4) .delete for Deleting the api data.
+
+1. get take 2 arguments these are 1.Router url path,Giving the functionality for running in given url path
