@@ -1,0 +1,58 @@
+REST API
+CREATING WITH NODE JS, EXPRESS JS, MONGODB
+
+setup-npm init press enter for all --entry name is not index put server.js its normal then 
+**npm i express mongoose.
+-->mongoose is used for handling & performance the routing.
+-->mongodb is used for connecting mongodb atlas from localhost with the help of mongoose
+**npm i -D nodemon for another time not same time nodemon is used for running the server with auto save.
+** changes in package.json file in scripts-- "start": "node server.js",
+    "server": "nodemon server.js"  for running the application and auto updating the code.
+
+MONGODB PLATFORM OPEN IN BROWSER THEN I HAVE ALREADY THERE SO JUST LOGIN WITH GOOGLE AND THEN 3 STEPS 1.CLUSTER 2.DATABASE ACCESS 3.NETWORK ACCESS
+
+1.create a cluster with free 
+2.database access click and create a new user inside create username and password then below Add user click then user created successful.
+3.network Access click and All access from anywhere then confirm.
+
+**then go to cluster and click connect button gave option then click connect our application.
+Then in this page below code is give just copy this and use anywhere in your applicaion thats all.
+
+****--mongodb+srv://<username>:<password>@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority--**
+
+CONNECTING MONGODB DATABASE
+
+const express =require('express');
+const mongoose =require('mongoose');//for connecting the data base
+const app=express()
+
+//it take 2 arguments 1 is script copy mongodb, 2 is not require when debrication err came it shows in terminal then use ,{useUnifiedTopology: true,useNewUrlParser:true} 
+mongoose.connect('mongodb+srv://shaikshakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority',{useUnifiedTopology: true,useNewUrlParser:true}).then(
+    ()=> console.log('db connected')
+).catch(err => console.log(err))  
+
+
+//GET
+app.get('/',(req,res)=>{
+    res.send('Hello')
+})
+
+app.listen(3000,()=>console.log("server is running"))
+
+//Adding data to db so use post method so first create scheema
+-->Scheema it a model for db it means structure post request data structure like json format object
+
+model.js file
+const mongoose =require('mongoose');
+//DESIGNING THE SCHEMA schema is ready
+const BrandName =mongoose.Schema({
+    brandname:{
+        type: String,
+        require:true,
+    },
+    date:{
+        type:Date,
+        default: Date.now
+    }
+
+})
