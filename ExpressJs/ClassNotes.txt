@@ -22,3 +22,40 @@ Basically we are using 4 main Requests GET,POST,PUT OR PATCH,AND DELETE.
 4) .delete for Deleting the api data.
 
 1. get take 2 arguments these are 1.Router url path,Giving the functionality for running in given url path
+SYNTEX--
+ app.get('/',(req,res)=>{
+    res.send(`<h1>Hello</h1> Shaik`)//IT GIVES OUTPUT ON THE BROWSER
+})
+
+ALL
+const express = require("express") //Importing the express 
+const app= express();
+
+app.get('/',(req,res)=>{
+    res.send('<h1>Hello</h1>Shaik')
+})
+const products = [ 
+    {
+        id:1,
+        name:"iphone"
+    },
+    {
+        id:2,
+        name:"mi"
+    },
+    {
+        id:3,
+        name:"realme"
+    }
+]
+app.get("/products",(req,res)=>{ //   CREATING THE API USING ABOVE PRODUCTS ALL PRODUCTS DISPLAYED
+    res.json(products)
+})
+app.get("/products/:id",(req,res)=>{  //PARTICULAR ID ONLY DISPLAYED USING THIS URL PATH AND FILTER
+    const newData=products.filter(item => item.id.toString() == req.params.id)
+    return res.json(newData);
+})
+app.listen(5000,()=>console.log("Server is Running"))
+
+
+2. post
