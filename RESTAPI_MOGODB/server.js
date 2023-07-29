@@ -40,5 +40,16 @@ catch(err){
     console.log(err.message)
 }
 })
+//Path params getting single item with single id params.
+app.get('/getallbrands/:id',async(req,res)=>{
+    try{
+const Data = await BrandName.findById(req.params.id);
+return res.json(Data);
+    }
+    catch(err){
+        console.log(err.message);
+    }
+})
+
 app.listen(3000,()=>console.log("server is running"))
 
