@@ -54,5 +54,11 @@ const BrandName =mongoose.Schema({
         type:Date,
         default: Date.now
     }
-
 })
+
+//mongodb is a Nosql database so 
+module.exports = mongoose.model('brandname',BrandName)//1 argument is filename and 2nd argument is schema.
+
+--->server.js file
+POST METHOD AND GET METHOD USING API TESTER USE ALSO POSTMAN, WITH MONGODB DATABASE ID LINK USING GET METHOD FOR VISUALISE IN BROWSER
+
