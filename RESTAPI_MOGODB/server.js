@@ -50,6 +50,17 @@ return res.json(Data);
         console.log(err.message);
     }
 })
-
+//Delete method by using above code
+//async was used by stopping usage of delay request.
+app.delete('/deletebrand/:id',async(req,res)=>{
+    //TRY CATCH BLOCK ARE USED FOR HANDLING ERRORS
+    try{
+await BrandName.findByIdAndDelete(req.params.id);
+return res.json(await BrandName.find())
+    }
+    catch(err){
+        console.log(err.message)
+    }
+})
 app.listen(3000,()=>console.log("server is running"))
 
