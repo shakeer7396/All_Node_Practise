@@ -1,0 +1,8 @@
+MERN TODO APP
+FIRST CREATE FRONTEND REACT APP AS CLIENT AND BACKEND PART Server
+*-> npm init then same as previous and npm i express mongoose cors
+--express for working on express module.
+--mongoose is used for configuring mongodb from local,
+--cors used for backend developed api used in frontend without facing any errors
+--npm i -D nodemon for running the server without starting repeating again.
+--concurrently is used for running both frontend and backend at the same time so we instal this.
