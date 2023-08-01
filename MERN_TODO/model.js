@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TaskSchema = new mongoose.schema({
+const TaskSchema = new mongoose.Schema({
     todo:{
         type:String,
         required:true
