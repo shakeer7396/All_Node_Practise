@@ -1,8 +1,26 @@
 MERN TODO APP
 FIRST CREATE FRONTEND REACT APP AS CLIENT AND BACKEND PART Server
-*-> npm init then same as previous and npm i express mongoose cors
+*-> npm init then same as previous it is a configaration file and npm i express mongoose cors
 --express for working on express module.
---mongoose is used for configuring mongodb from local,
---cors used for backend developed api used in frontend without facing any errors
---npm i -D nodemon for running the server without starting repeating again.
+--mongoose is used for configuring mongodb from the local,
+--cors used for backend developed api used in frontend without facing any policy errors 2 servers run without error.
+--npm i -D nodemon for running the server without starting repeating again auto restart server.
 --concurrently is used for running both frontend and backend at the same time so we instal this.
+
+server.js
+1. importing express and initialize this a variable.
+2. running port in bottom app.listen(5000,()=>console.log("SERVER RUNNING")) FOR CHECKING SERVER RUNNING OR NOT.
+3. USE ROUTERS FOR DISPLAYING DATA ON THE BROWSER LIKE get, post, delete, put.
+    app.get('/', (req, res) => { 
+    res.send('<h1>Hello World</h1>');
+});
+    // "/" it is a router 2 parameters a->req means request sending request to the url 
+    b->res means it shows response as output on the browser 
+    res.send what ever you want to send just use this 
+4. SETUP SCRIPTS IN BACKEND PACKAGE JSON FILE LIKE 
+"scripts": {
+    "start": "node server",
+    "server": "nodemon server" //FOR AUTO START SERVER
+  },
+5. MONGODB configaration
+    
