@@ -2,11 +2,15 @@
 const express = require('express');
 const mongoose = require("mongoose")
 const TaskSchema = require("./model.js");
+const cors=require("cors");
 
 const app = express();
 
 // Middleware to parse JSON in request body
 app.use(express.json());
+app.use(cors({
+    origin:'*'
+}))
 
 mongoose.connect('mongodb+srv://Shaik_Shakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log('db connected'))
