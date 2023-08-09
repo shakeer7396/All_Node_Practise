@@ -23,4 +23,22 @@ server.js
     "server": "nodemon server" //FOR AUTO START SERVER
   },
 5. MONGODB configaration
-    
+    mongoose.connect('mongodb+srv://Shaik_Shakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
+    .then(() => console.log('db connected'))
+    .catch(err => console.log(err));
+
+    --- model.js ---
+    const mongoose = require('mongoose');
+
+const TaskSchema = new mongoose.Schema({
+    todo:{
+        type:String,
+        required:true
+    },
+    date:{
+        type:Date,
+        default:Date.now
+    }
+})
+
+module.exports = mongoose.model('TaskSchema',TaskSchema);
