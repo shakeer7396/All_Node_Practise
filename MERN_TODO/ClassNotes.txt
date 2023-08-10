@@ -7,9 +7,15 @@ FIRST CREATE FRONTEND REACT APP AS CLIENT AND BACKEND PART Server
 --npm i -D nodemon for running the server without starting repeating again auto restart server.
 --concurrently is used for running both frontend and backend at the same time so we instal this.
 
-server.js
+************BACKEND SETUP FOR TODO APPLICATION*****************************
+
+server.js file
+EXPRESS SETUP:-
 1. importing express and initialize this a variable.
-2. running port in bottom app.listen(5000,()=>console.log("SERVER RUNNING")) FOR CHECKING SERVER RUNNING OR NOT.
+ a.const express = require('express');
+ b.const app = express();
+2. running port in bottom
+ app.listen(5000,()=>console.log("SERVER RUNNING")) FOR CHECKING SERVER RUNNING OR NOT.
 3. USE ROUTERS FOR DISPLAYING DATA ON THE BROWSER LIKE get, post, delete, put.
     app.get('/', (req, res) => { 
     res.send('<h1>Hello World</h1>');
@@ -22,16 +28,24 @@ server.js
     "start": "node server",
     "server": "nodemon server" //FOR AUTO START SERVER
   },
-5. MONGODB configaration
+5. MONGODB configaration SETUP
+    a.First import mongoose and create Schema
+    const mongoose = require("mongoose")
+    const TaskSchema = require("./model.js");
+
+    //IN MONGOOSE ATLAS CREATE A CLUSTER AND SETUP AS SAME PRREVIOUS 
+    //BACKEND CONNECTING SCRIPT WAS GIVEN IS BELOW ON USERNAME AND PASSWORD
+    ***IT Take 2 arguments script and debrications.
     mongoose.connect('mongodb+srv://Shaik_Shakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log('db connected'))
     .catch(err => console.log(err));
 
+    ** MONGODB IS NOSQL DATABASE SO CREATE A SCHEMA MODEL 
     --- model.js ---
-    const mongoose = require('mongoose');
+    const mongoose = require('mongoose');//IMPORTING MONGOOSE IMP
 
-const TaskSchema = new mongoose.Schema({
-    todo:{
+const TaskSchema = new mongoose.Schema({ // INITIATING WITH VARIABLE IT IS ACTUAL SCHEMA FOR US
+    todo:{  //ITS A VARIABLE
         type:String,
         required:true
     },
@@ -41,4 +55,48 @@ const TaskSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('TaskSchema',TaskSchema);
+module.exports = mongoose.model('TaskSchema',TaskSchema);// EXPORTING MODULE AND  INITIATING WITH A NAME 'TaskSchema'.
+
+SERVER.JS FILE
+***POST REQUEST***
+1. app.post('/addtask', async (req, res) => {//async for taking time for running
+    const { todo } =req.body;//destructuring with value stored variable todo.handing todo data req.body
+            //ADDING SO CREATING OBJECT WITH MODULE SCHEMA AND import above model.js for sending data.
+    try {//HANDLING ERRORS EASILY
+        const newData = new TaskSchema({
+            todo: todo
+        });
+        await newData.save();//SAVING DATA & VALUE TO DATA BASE,AWAIT HANDLING THE DELAY RESPONSES. 
+        const tasks = await TaskSchema.find();//INITIALIZE VARIABLE USE BELOW RETURN
+        return res.json(tasks);
+    } catch (err) {
+        console.log(err.message);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+***GET REQUEST***
+2. app.get("/gettask",async(req,res)=>{
+    try{
+        return res.json(await TaskSchema.find());//RETURNING VALUE, GETTING FROM TASKSCHEMA USING FIND.
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+***DELETE REQUEST***
+3. app.delete('/delete/:id',async(req,res)=>{//USING BY PARTICULAR ID SO :id 
+    try{
+        //findByIdAndDelete ITS A DELETE METHOD FOR PARTICULAR ID USING REQ.PARAMS URL. 
+        await TaskSchema.findByIdAndDelete(req.params.id)
+        return res.json(await TaskSchema.find())//RETURNING REMAINING DATA USING FIND
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+
+
+************FRONTEND SETUP FOR TODO APPLICATION*****************************
