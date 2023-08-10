@@ -30,8 +30,9 @@ axios.get('http://localhost:5000/gettask').then(
         </form>
         <br />
         {item.map(task => 
-        <div key={task._id}>
-          <h2>{task.todo}</h2><button onClick={()=>deleteHandler(task._id)}>Delete</button>
+        <div key={task._id} style={{display:"flex", alignItems:"center", alignContent:"center",margin:"auto", textAlign:"center", justifyContent: "space-evenly"}}>
+          <h2>{task.todo}</h2>
+          <button onClick={()=>deleteHandler(task._id)}>Delete</button>
         </div>)}
         
       </center>
