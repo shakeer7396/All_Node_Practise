@@ -98,5 +98,25 @@ SERVER.JS FILE
 })
 
 
+******CONNECTING BACKEND WITH FRONTEND********
+
+1.ENABLING CORS USING IMPORT
+const cors=require("cors"); //importing 
+app.use(cors({//CREATING OBJECT
+    origin:'*' // DEFAULT ATTRIBUTE VALUE ORIGIN AS  "*" IT MEANS ACCESS ANY THING FROM BACKEND.
+}))
+
+//INSTALL npm i cors concurrently FOR RUNNING 2 SERVERS AT SAME TIME WITHOUT ERRORS.
+IN PACKAGE.JSON ADD CLIENT AND DEV
+"scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+// NPM RUN DEV  ITS A SINGLE COMMAND FOR RUNNING FRONT AND BACKEND SERVERS.
 
 ************FRONTEND SETUP FOR TODO APPLICATION*****************************
+
+1.npx create-react-app client then cd client then npm start.
+2.
