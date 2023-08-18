@@ -1,0 +1,5 @@
+JWT TOKEN BASED LOGIN AUTHENTICATION.
+MISSING FEATURES WITHOUT JWT
+1-Session Management
+2-Accessing routers securely
+3-Secure Authentication
