@@ -4,10 +4,11 @@ JWT IS  KIND OF MIDDLEWARE.
     * To maintain a session management.
     * To maintain a secure Authentication etc.
 MISSING FEATURES WITHOUT JWT
-1-Session Management
-2-Accessing routers securely
-3-Secure Authentication
+1-Session Management --> Particular time 
+2-Accessing routers securely --> Validation for security not directly
+3-Secure Authentication --> Checking user by id 
 
+TOKEN
 --> Token means it creates encode value for every new user, particular user try to login again it was checked with tokens encode value will decoded and generate object type value like number.
 
 --> Install modules for this application
@@ -15,3 +16,54 @@ MISSING FEATURES WITHOUT JWT
 * Client Side npm i axios react-router-dom redux react-redux redux-devtools-extension
 
 -->First we can use and setup backend things then next frontend.
+
+..Install dependencies and setup in package.json file
+ npm i mongoose express cors jsonwebtoken,
+ npm i -D nodemon concurrently 
+"scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  npm run server
+BACKEND BASIC SETUP server.js
+
+const express = require('express');
+const mongoose = require('mongoose');
+const Registeruser = require("./model")
+const app = express();
+
+MONGODB SETUP
+mongoose.connect('mongodb+srv://Shaik_Shakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
+    .then(() => console.log('DB connected'))
+    .catch(err => console.log(err));
+
+app.listen(5000,()=>{
+    console.log('Server Running')
+})
+
+MONGOOSE SCHEMA SETUP IN model.js
+
+const mongoose = require("mongoose");
+
+let Registeruser = new mongoose.Schema({
+    username:{
+        type: String,
+        required:true,
+    },
+    email:{
+        type: String,
+        required:true,
+        unique: true,
+    },
+    password:{
+        type: String,
+        required:true,
+    },
+    confirmpassword:{
+        type: String,
+        required: true,
+    }
+})
+
+module.exports = mongoose.model("Registeruser",Registeruser);//First one is put anything its a model name, Second one is created schema.
+
