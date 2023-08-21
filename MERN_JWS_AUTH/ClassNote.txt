@@ -1,5 +1,17 @@
-JWT TOKEN BASED LOGIN AUTHENTICATION.
+JWT (JSON WEB TOKEN) BASED LOGIN AUTHENTICATION.
+JWT IS  KIND OF MIDDLEWARE.
+    * This is used for making an http request in a secured manner.
+    * To maintain a session management.
+    * To maintain a secure Authentication etc.
 MISSING FEATURES WITHOUT JWT
 1-Session Management
 2-Accessing routers securely
 3-Secure Authentication
+
+--> Token means it creates encode value for every new user, particular user try to login again it was checked with tokens encode value will decoded and generate object type value like number.
+
+--> Install modules for this application
+* Server Side npm install express mongoose cors jsonwebtoken
+* Client Side npm i axios react-router-dom redux react-redux redux-devtools-extension
+
+-->First we can use and setup backend things then next frontend.
