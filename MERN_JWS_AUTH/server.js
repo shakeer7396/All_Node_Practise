@@ -2,10 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Registeruser = require("./model")
 const jwt = require('jsonwebtoken')
-const middleware = require("./middleware")
+const middleware = require("./middleware");
+
+const cors = require("cors");
 
 const app = express();
 app.use(express.json())
+
+app.use(cors({origin:"*"}))
 
 mongoose.connect('mongodb+srv://Shaik_Shakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log('DB connected'))

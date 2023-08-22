@@ -22,7 +22,9 @@ TOKEN
  npm i -D nodemon concurrently 
 "scripts": {
     "start": "node server",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "client" : "npm start --prefix client",
+    "dev" : "concurrently \"npm run server\" \"npm run client\" "
   },
   npm run server
 BACKEND BASIC SETUP server.js
@@ -75,8 +77,12 @@ const Registeruser = require("./model")
 const jwt = require('jsonwebtoken')
 const middleware = require("./middleware")
 
+const cors = require("cors");
+
 const app = express();
 app.use(express.json())
+
+app.use(cors({origin:"*"}))
 
 mongoose.connect('mongodb+srv://Shaik_Shakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log('DB connected'))
