@@ -1,7 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import axios from 'axios';
+import { store } from './App'; 
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+    const navigate =useNavigate()
+    const [token,setToken]=useContext(store);
     const [data,setData] = useState({
         
         email:"",
@@ -13,13 +17,16 @@ const Login = () => {
     const submitHandler = e =>{
         e.preventDefault();
         axios.post("http://localhost:5000/login",data).then(
-            res => alert(res.data)
+            res => setToken(res.data.token)
         )
+    }
+    if(token){
+       return navigate('/myprofile')
     }
   return (
     <div>
         <center>
-        <form onSubmit={submitHandler} >
+        <form onSubmit={submitHandler} autoComplete='off' >
             <h3>Login Page</h3>
             <input type="text" onChange={changeHandler} name="email" placeholder='Email' /> <br/>
             <input type="password" onChange={changeHandler} name="password" placeholder='Password'  /> <br/>

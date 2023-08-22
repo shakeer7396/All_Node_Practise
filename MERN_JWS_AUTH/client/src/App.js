@@ -5,9 +5,14 @@ import Register from './Register';
 import Login from './Login';
 import Myprofile from './Myprofile';
 
+export const store = createContext();
+
 const App = () => {
+  const [token,setToken] = useState(null);
+
   return (
     <div>
+      <store.Provider value={[token,setToken]}>
       <BrowserRouter>
       <Nav />
       <Routes>
@@ -17,6 +22,7 @@ const App = () => {
 
       </Routes>
       </BrowserRouter>
+      </store.Provider>
     </div>
   )
 }

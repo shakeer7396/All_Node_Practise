@@ -20,7 +20,7 @@ const Register = () => {
   return (
     <div>
         <center>
-        <form onSubmit={submitHandler} >
+        <form onSubmit={submitHandler} autoComplete='off'>
             <h3>Register</h3>
             <input type="text" onChange={changeHandler} name="username" placeholder='User Name'  /> <br/>
             <input type="text" onChange={changeHandler} name="email" placeholder='Email'  /> <br/>
