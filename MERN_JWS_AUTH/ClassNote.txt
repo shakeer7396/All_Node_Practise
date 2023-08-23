@@ -82,7 +82,7 @@ const cors = require("cors");
 const app = express();
 app.use(express.json())
 
-app.use(cors({origin:"*"}))
+app.use(cors({origin:"*"}))//RUNNING 2 SERVERS AT SAME TIME WITHOUT ERRORS
 
 mongoose.connect('mongodb+srv://Shaik_Shakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log('DB connected'))
