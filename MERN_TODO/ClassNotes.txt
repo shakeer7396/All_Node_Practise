@@ -20,7 +20,8 @@ EXPRESS SETUP:-
     app.get('/', (req, res) => { 
     res.send('<h1>Hello World</h1>');
 });
-    // "/" it is a router 2 parameters a->req means request sending request to the url 
+    // "/" it is a router 2 parameters 
+    a->req means request sending request to the url 
     b->res means it shows response as output on the browser 
     res.send what ever you want to send just use this 
 4. SETUP SCRIPTS IN BACKEND PACKAGE JSON FILE LIKE 
@@ -37,6 +38,7 @@ EXPRESS SETUP:-
     //BACKEND CONNECTING SCRIPT WAS GIVEN IS BELOW ON USERNAME AND PASSWORD
     ***IT Take 2 arguments script and debrications.
     mongoose.connect('mongodb+srv://Shaik_Shakeer:shaikshakeer@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
+    mongodb+srv://Shaik_Shakeer:<db_password>@cluster0.muqcwcm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
     .then(() => console.log('db connected'))
     .catch(err => console.log(err));
 
@@ -120,7 +122,7 @@ IN PACKAGE.JSON ADD CLIENT AND DEV
 
 1.npx create-react-app client then cd client then npm start.
 2.npm i axios for getting api data.
-3.use useEffect for handling sideeffects in url.
+3.use useEffect for handling side effects in url.
 4.using useState for creating a variable and used with storing data with item,setItem
 5.using map method for fetching data to the browser.
 
